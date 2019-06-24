@@ -10,6 +10,10 @@
     padding: 20rem 0;
     transform: skewY(-7deg) translateY(-9rem);
 
+    @include respond($bp-tab-port) {
+        padding: 15rem 0;
+    }
+
     & > * {
         transform: skewY(7deg);
     }
@@ -18,5 +22,71 @@
 .section-tours {
     background-color: $color-grey-light-1;
     margin-top: -20rem;
-    padding: 25rem 5rem 10rem;
+    padding: 25rem 5rem 15rem;
+
+    @include respond($bp-tab-port) {
+        padding: 22rem 5rem 10rem;
+    }
+
+    @include respond($bp-phone) {
+        padding: 20rem 5rem 5rem;
+    }
+}
+
+.section-stories {
+    position: relative;
+    padding: 10rem 0;
+
+    @include respond($bp-phone) {
+        padding: 5rem 0;
+    }
+}
+
+.section-book {
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
+    padding: 15rem 0;
+
+    @include respond($bp-tab-land) {
+        padding: 12rem 0;
+    }
+}
+
+.book {
+    background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 50%, transparent 50%), url('../../img/nat-10.jpg');
+    background-size: cover;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 3rem 6rem rgba($color-black, .2);
+
+    @include respond($bp-tab-land) {
+        background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 70%, transparent 70%), url('../../img/nat-10.jpg');
+    }
+
+    @include respond($bp-tab-port) {
+        background-image: linear-gradient(105deg, rgba($color-white, .9) 0%,  100%, transparent 100%), url('../../img/nat-10.jpg');
+    }
+
+    &__heading {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        display: inline-block;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    &__content {
+        width: 50%;
+        height: 100%;
+        padding: 6rem;
+
+        @include respond($bp-tab-land) {
+            width: 70%;
+        }
+
+        @include respond($bp-tab-port) {
+            width: 100%;
+        }
+    }
 }

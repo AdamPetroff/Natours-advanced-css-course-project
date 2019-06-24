@@ -5,3 +5,41 @@
         content: '';
     }
 }
+
+@mixin centerInBlock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*
+0 - 600px phone
+600 - 900 tablet portrait
+900 - 1200 tablet landscape
+[1200 - 1800] desktop
+1800+ big desktop
+
+$breakpoint argument choices:
+- phone
+- tablet-port
+- tablet-land
+- big-desktop
+ */
+@mixin respond($breakpoint) {
+    @if $breakpoint == $bp-phone {
+        @media only screen and (max-width: 37.5em) { @content };
+    }
+
+    @if $breakpoint == $bp-tab-port {
+        @media only screen and (max-width: 56.25em) { @content };
+    }
+
+    @if $breakpoint == $bp-tab-land {
+        @media only screen and (max-width: 75em) { @content };
+    }
+
+    @if $breakpoint == $bp-big-desktop {
+        @media only screen and (min-width: 112.5em) { @content };
+    }
+}

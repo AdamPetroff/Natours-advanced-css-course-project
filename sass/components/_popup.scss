@@ -1,0 +1,158 @@
+.popup {
+    position:fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color-black, .9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-black, .3);
+    }
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    &__content {
+        transition: all .3s .2s;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.5);
+        opacity: 0;
+        display: table;
+        width: 70%;
+        background-color: $color-grey-light-1;
+        z-index: 10;
+        border-radius: 3px;
+        overflow: hidden;
+
+        @include respond($bp-tab-land) {
+            width: 80%;
+        }
+
+        @include respond($bp-tab-port) {
+            display: block;
+        }
+
+        @include respond($bp-phone) {
+            width: 90%;
+        }
+    }
+
+    &__left {
+        width: 40%;
+        display: table-cell;
+
+        @include respond($bp-tab-port) {
+            width: 100%;
+            display: block;
+            height: 25rem;
+        }
+
+        @include respond($bp-phone) {
+            height: 20rem;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+
+        @include respond($bp-tab-port) {
+            width: 50%;
+            height: 100%;
+            display: inline-block;
+            float: left;
+        }
+    }
+
+    &__right {
+        width: 60%;
+        padding: 2rem 4rem;
+        display: table-cell;
+        vertical-align: middle;
+
+        @include respond($bp-tab-port) {
+            padding: 3rem 4rem 4rem;
+        }
+
+        @include respond($bp-phone) {
+            text-align: center;
+        }
+    }
+
+    &__heading {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        display: inline-block;
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: .2rem;
+
+        @include respond($bp-tab-land) {
+            font-size: 2.5rem;
+        }
+
+        @include respond($bp-phone) {
+            font-size: 2rem;
+        }
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-grey-light-2;
+        text-align: left;
+        hyphens: auto;
+        margin-bottom: 4rem;
+
+        @include respond($bp-tab-land) {
+            column-gap: 2rem;
+        }
+
+        @include respond($bp-tab-port) {
+            margin-bottom: 2rem;
+        }
+
+        @include respond($bp-phone) {
+            column-count: 1;
+            hyphens: initial;
+            text-align: center;
+        }
+    }
+
+    &__close {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            color: $color-black;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+
+    }
+}

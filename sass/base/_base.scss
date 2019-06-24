@@ -7,10 +7,31 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; // 1rem - 10px; 10px / 16px (default font size) = 62.5%
+
+    @include respond($bp-big-desktop) {
+        font-size: 75%; // 12px; 12/16
+    }
+
+    @include respond($bp-tab-land) {
+        font-size: 56.25%; // 9px; 9/16
+    }
+
+    @include respond($bp-tab-port) {
+        font-size: 50%; // 8px; 8/16
+    }
 }
 
 body {
     padding: 3rem;
     box-sizing: border-box;
+
+    @include respond($bp-tab-port) {
+        padding: 0;
+    }
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
 }

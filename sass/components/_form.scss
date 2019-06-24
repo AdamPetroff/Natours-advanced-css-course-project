@@ -1,0 +1,121 @@
+.form {
+
+    @include respond($bp-phone) {
+        text-align: center;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        display: block;
+        width: 90%;
+        border: 0;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .8);
+        font-family: inherit;
+        border-bottom: 3px solid transparent;
+        color: inherit;
+
+        @include respond($bp-tab-port) {
+            width: 100%;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        opacity: 1;
+        transform: translateY(0);
+        margin-left: 2rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    &__input:placeholder-shown + &__label {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-3rem);
+    }
+
+    &__group {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__radio-group {
+        display: inline-block;
+        width: 49%;
+        position: relative;
+
+        @include respond($bp-phone) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        margin-left: 3.5rem;
+
+        @include respond($bp-phone) {
+            margin-left: 0;
+        }
+    }
+
+    &__radio-button {
+        display: inline-block;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        border: 5px solid $color-primary;
+        position: relative;
+        left: 0;
+        top: 1rem;
+
+        &::after {
+            opacity: 0;
+            display: block;
+            content: '';
+            height: 1.5rem;
+            width: 1.5rem;
+            background-color: #55c57a;
+            border-radius: 50%;
+            transition: opacity .2s;
+            @include centerInBlock;
+
+            @include respond($bp-tab-land) {
+                height: 1.4rem;
+                width: 1.4rem;
+            }
+
+            @include respond($bp-tab-port) {
+                height: 1.2rem;
+                width: 1.2rem;
+            }
+        }
+    }
+
+    &__radio-input:checked + &__radio-label > &__radio-button::after {
+        opacity: 1;
+    }
+}
